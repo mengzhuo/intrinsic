@@ -1,5 +1,5 @@
 
-# intrinsics
+# intrinsic
 Work in progress.
 Provide Golang native SIMD intrinsics on x86/amd64 platform
 
