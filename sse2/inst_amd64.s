@@ -1,5 +1,15 @@
 #include "textflag.h"
 
+#define x1ret \
+		MOVOU X1, (DI)
+		RET
+
+#define IMMX(OPCODE) \
+		JMP CX;		\
+		OPCODE X1, X2, 0;\
+		MOVOU X1, (DI);\
+		RET
+
 
 
 TEXT ·ADDPDm128byte(SB),NOSPLIT,$0-48
@@ -1328,6 +1338,27 @@ TEXT ·PXORm128byte(SB),NOSPLIT,$0-48
 	
 
 
+TEXT ·SHUFPDm128byte(SB),NOSPLIT,$0-56
+	
+	MOVQ a+0(FP), DI
+	MOVQ b+24(FP), SI
+	MOVOU (DI), X1
+	MOVOU (SI), X2
+	MOVQ c+48(FP), CX
+	IMMX(SHUFPD)
+
+
+TEXT ·SHUFPDm128float32(SB),NOSPLIT,$0-56
+	
+	MOVQ a+0(FP), DI
+	MOVQ b+24(FP), SI
+	MOVOU (DI), X1
+	MOVOU (SI), X2
+	MOVQ c+48(FP), CX
+	IMMX(SHUFPD)
+
+
+
 TEXT ·SQRTPDm128byte(SB),NOSPLIT,$0-48
 	
 	MOVQ a+0(FP), SI
@@ -1488,4 +1519,5 @@ TEXT ·XORPDm128float32(SB),NOSPLIT,$0-48
 	MOVOU X1, (SI)
 	RET
 	
+
 

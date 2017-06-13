@@ -289,6 +289,10 @@ func makeInst(feature string, instList []*Inst) {
 		switch fmt.Sprint(inst.Args) {
 		case "[X1 X2]":
 		case "[Y1 Y2]":
+		case "[X1 X2 imm8u]":
+			if inst.FuncName != "SHUFPD" {
+				continue
+			}
 		default:
 			continue
 		}
@@ -388,14 +392,6 @@ func {{$inst.FuncName}}{{$inst.Register}}{{$target}}({{$inst.CovertArgs $target}
 {{end}}{{end}}
 `
 
-const asmTmpl = `#include "textflag.h"
-
-{{ range $index, $inst := .InstList }}
-{{ range $target := .Target }}
-TEXT ·{{$inst.FuncName}}{{$inst.Register}}{{$target}}(SB),NOSPLIT,$0-{{$inst.FrameSize}}
-	{{$inst.ArgsToAsm}}
-{{end}}{{end}}
-`
 const testTmpl = ``
 
 const X1X2 = `
@@ -438,10 +434,27 @@ const Y1Y2Raw = `
 const X1X2imm8u = `
 	MOVQ a+0(FP), DI
 	MOVQ b+24(FP), SI
-	MOVQ c+48(FP), BX
 	MOVOU (DI), X1
 	MOVOU (SI), X2
-	%s X2, X1, BX
-	MOVOU X1, (DI)
-	RET
+	MOVQ c+48(FP), CX
+	IMMX(%s)
+`
+const asmTmpl = `#include "textflag.h"
+
+#define x1ret \
+		MOVOU X1, (DI)
+		RET
+
+#define IMMX(OPCODE) \
+		JMP CX;		\
+		OPCODE X1, X2, 0;\
+		MOVOU X1, (DI);\
+		RET
+
+{{ range $index, $inst := .InstList }}
+{{ range $target := .Target }}
+TEXT ·{{$inst.FuncName}}{{$inst.Register}}{{$target}}(SB),NOSPLIT,$0-{{$inst.FrameSize}}
+	{{$inst.ArgsToAsm}}
+{{end}}{{end}}
+
 `
