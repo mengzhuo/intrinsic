@@ -278,6 +278,7 @@ func makeInst(feature string, instList []*Inst) {
 
 	argsTable := map[string]int{}
 	skipedInst := []*Inst{}
+	var gen int
 	for _, inst := range instList {
 		if _, ok := skipInst[inst.FuncName[:3]]; ok {
 			continue
@@ -289,17 +290,14 @@ func makeInst(feature string, instList []*Inst) {
 		switch fmt.Sprint(inst.Args) {
 		case "[X1 X2]":
 		case "[Y1 Y2]":
-		case "[X1 X2 imm8u]":
-			if inst.FuncName != "SHUFPD" {
-				log.Print(inst.FuncName)
-				continue
-			}
 		default:
 			continue
 		}
+		gen += 1
 		skipedInst = append(skipedInst, inst)
 	}
-
+	log.Printf("%s gen=%d, skip=%d, ratio=%0.2f%%", feature, gen, len(instList)-gen,
+		float64(gen)/float64(len(instList))*100)
 	dat := &Data{*plaform, feature, skipedInst}
 	tmpl := funcTmpl
 	switch *outPath {
@@ -341,9 +339,6 @@ func (i *Inst) ArgsToAsm() string {
 			return fmt.Sprintf(Y1Y2Raw, i.TrueOpcode())
 		}
 		return fmt.Sprintf(Y1Y2, i.FuncName)
-
-	case "[X1 X2 imm8u]":
-		return fmt.Sprintf(X1X2imm8u, i.FuncName)
 	default:
 		log.Printf("unsupported args, %s", i.FuncName)
 	}
@@ -422,13 +417,6 @@ const Y1Y2Raw = `
 	MOVOU Y1, (SI)
 	RET
 	`
-
-const X1X2imm8u = `
-	FPTOX1X2
-	MOVQ c+48(FP), CX
-	IMMX(%s)
-	RETX1X2
-`
 const asmTmpl = `#include "textflag.h"
 
 #define FPTOX1X2 \
@@ -441,14 +429,6 @@ const asmTmpl = `#include "textflag.h"
 	MOVOU X1, (SI);\
 	MOVOU X2, (DI);\
 	RET;\
-
-#define IMMX(OPCODE) \
-	CMPQ imm8u+48(FP), $0; \
-	JNE 2(PC); \
-	OPCODE $0, X1, X2;\
-	CMPQ imm8u+48(FP), $1; \
-	JNE 2(PC); \
-	OPCODE $0, X1, X2;\
 
 {{ range $index, $inst := .InstList }}
 {{ range $target := .Target }}
