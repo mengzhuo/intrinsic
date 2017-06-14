@@ -434,21 +434,21 @@ const X1X2imm8u = `
 const asmTmpl = `#include "textflag.h"
 
 #define FPTOX1X2 \
-		MOVQ a+0(FP), SI;\
-		MOVQ b+24(FP), DI;\
-		MOVOU (SI), X1;\
-		MOVOU (DI), X2;\
+	MOVQ a+0(FP), SI;\
+	MOVQ b+24(FP), DI;\
+	MOVOU (SI), X1;\
+	MOVOU (DI), X2;\
 
 #define RETX1 \
 	MOVOU X1, (SI);\
 	RET;\
 
 #define IMMX(OPCODE) \
-		ADDQ PC, CX; \
-		JMP CX;		\
-		OPCODE X1, X2, 0;\
-		MOVOU X1, (DI);\
-		RET
+	ADDQ PC, CX; \
+	JMP CX;		\
+	OPCODE X1, X2, 0;\
+	MOVOU X1, (DI);\
+	RET
 
 {{ range $index, $inst := .InstList }}
 {{ range $target := .Target }}
