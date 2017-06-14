@@ -390,8 +390,9 @@ const funcTmpl = `package {{.FeatureName}}
 
 {{ range $index, $inst := .InstList }}
 {{ range $target := .Target }}
-// {{$inst.Description}}
 // go:noescape
+
+// {{$inst.Description}}
 func {{$inst.FuncName}}{{$inst.Register}}{{$target}}({{$inst.CovertArgs $target}})
 {{end}}{{end}}
 `
