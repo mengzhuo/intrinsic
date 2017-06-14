@@ -394,23 +394,14 @@ func {{$inst.FuncName}}{{$inst.Register}}{{$target}}({{$inst.CovertArgs $target}
 
 const testTmpl = ``
 
-const X1X2 = `
-	MOVQ a+0(FP), SI
-	MOVQ b+24(FP), DI
-	MOVOU (SI), X1
-	MOVOU (DI), X2
+const X1X2 = `X1X2TOREG
 	%s X2, X1
-	MOVOU X1, (SI)
-	RET
+	RETX1
 	`
-const X1X2Raw = `
-	MOVQ a+0(FP), SI
-	MOVQ b+24(FP), DI
-	MOVOU (SI), X1
-	MOVOU (DI), X2
+
+const X1X2Raw = `X1X2TOREG
 	%s BYTE $0xca // $0xca = X2, X1
-	MOVOU X1, (SI)
-	RET
+	RETX1
 	`
 const Y1Y2 = `
 	MOVQ a+0(FP), SI
@@ -432,18 +423,25 @@ const Y1Y2Raw = `
 	`
 
 const X1X2imm8u = `
-	MOVQ a+0(FP), DI
-	MOVQ b+24(FP), SI
-	MOVOU (DI), X1
-	MOVOU (SI), X2
+	X1X2TOREG
 	MOVQ c+48(FP), CX
 	IMMX(%s)
 `
 const asmTmpl = `#include "textflag.h"
 
 #define x1ret \
-		MOVOU X1, (DI)
-		RET
+		MOVOU X1, (DI);\
+		RET;\
+
+#define X1X2TOREG \
+		MOVQ a+0(FP), SI;\
+		MOVQ b+24(FP), DI;\
+		MOVOU (SI), X1;\
+		MOVOU (DI), X2;\
+
+#define RETX1 \
+	MOVOU X1, (SI);\
+	RET;\
 
 #define IMMX(OPCODE) \
 		JMP CX;		\
