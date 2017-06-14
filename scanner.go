@@ -290,10 +290,13 @@ func makeInst(feature string, instList []*Inst) {
 		case "[X1 X2]":
 		case "[Y1 Y2]":
 		case "[X1 X2 imm8u]":
-			if inst.FuncName != "SHUFPD" {
-				log.Print(inst.FuncName)
-				continue
-			}
+			continue
+			/*
+				if inst.FuncName != "SHUFPD" {
+					log.Print(inst.FuncName)
+					continue
+				}
+			*/
 		default:
 			continue
 		}
