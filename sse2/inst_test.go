@@ -23,6 +23,13 @@ func TestPSUBDint32(t *testing.T) {
 	t.Log(a, b)
 }
 
+func TestSHUFPD(t *testing.T) {
+	a := []float32{3, 3, 5, 5}
+	b := []float32{2, 3, 4, 5}
+	SHUFPDm128float32(a, b, 1)
+	t.Log(a, b)
+}
+
 func generalMin(a, b []byte) {
 	for i := 0; i < len(a); i++ {
 		if a[i] < b[i] {
