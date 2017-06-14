@@ -291,6 +291,7 @@ func makeInst(feature string, instList []*Inst) {
 		case "[Y1 Y2]":
 		case "[X1 X2 imm8u]":
 			if inst.FuncName != "SHUFPD" {
+				log.Print(inst.FuncName)
 				continue
 			}
 		default:
@@ -394,12 +395,12 @@ func {{$inst.FuncName}}{{$inst.Register}}{{$target}}({{$inst.CovertArgs $target}
 
 const testTmpl = ``
 
-const X1X2 = `X1X2TOREG
+const X1X2 = `FPTOX1X2
 	%s X2, X1
 	RETX1
 	`
 
-const X1X2Raw = `X1X2TOREG
+const X1X2Raw = `FPTOX1X2
 	%s BYTE $0xca // $0xca = X2, X1
 	RETX1
 	`
@@ -423,17 +424,13 @@ const Y1Y2Raw = `
 	`
 
 const X1X2imm8u = `
-	X1X2TOREG
+	FPTOX1X2
 	MOVQ c+48(FP), CX
 	IMMX(%s)
 `
 const asmTmpl = `#include "textflag.h"
 
-#define x1ret \
-		MOVOU X1, (DI);\
-		RET;\
-
-#define X1X2TOREG \
+#define FPTOX1X2 \
 		MOVQ a+0(FP), SI;\
 		MOVQ b+24(FP), DI;\
 		MOVOU (SI), X1;\
@@ -444,6 +441,7 @@ const asmTmpl = `#include "textflag.h"
 	RET;\
 
 #define IMMX(OPCODE) \
+		ADDQ PC, CX; \
 		JMP CX;		\
 		OPCODE X1, X2, 0;\
 		MOVOU X1, (DI);\
