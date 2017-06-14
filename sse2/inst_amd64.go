@@ -456,6 +456,14 @@ func PUNPCKLWDm128byte(X1 []byte, X2 []byte)
 // go:noescape
 func PXORm128byte(X1 []byte, X2 []byte)
 
+// Shuffle Packed Double-Precision Floating-Point Values
+// go:noescape
+func SHUFPDm128byte(X1 []byte, X2 []byte, imm8u uint8)
+
+// Shuffle Packed Double-Precision Floating-Point Values
+// go:noescape
+func SHUFPDm128float32(X1 []float32, X2 []float32, imm8u uint8)
+
 // Compute Square Roots of Packed Double-Precision Floating-Point Values
 // go:noescape
 func SQRTPDm128byte(X1 []byte, X2 []byte)

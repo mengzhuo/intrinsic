@@ -290,13 +290,10 @@ func makeInst(feature string, instList []*Inst) {
 		case "[X1 X2]":
 		case "[Y1 Y2]":
 		case "[X1 X2 imm8u]":
-			continue
-			/*
-				if inst.FuncName != "SHUFPD" {
-					log.Print(inst.FuncName)
-					continue
-				}
-			*/
+			if inst.FuncName != "SHUFPD" {
+				log.Print(inst.FuncName)
+				continue
+			}
 		default:
 			continue
 		}
@@ -400,12 +397,12 @@ const testTmpl = ``
 
 const X1X2 = `FPTOX1X2
 	%s X2, X1
-	RETX1
+	RETX1X2
 	`
 
 const X1X2Raw = `FPTOX1X2
 	%s BYTE $0xca // $0xca = X2, X1
-	RETX1
+	RETX1X2
 	`
 const Y1Y2 = `
 	MOVQ a+0(FP), SI
@@ -439,7 +436,7 @@ const asmTmpl = `#include "textflag.h"
 	MOVOU (SI), X1;\
 	MOVOU (DI), X2;\
 
-#define RETX1 \
+#define RETX1X2 \
 	MOVOU X1, (SI);\
 	RET;\
 
