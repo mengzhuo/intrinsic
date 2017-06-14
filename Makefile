@@ -1,3 +1,7 @@
+.PHONY: all
+	
+all : sse2 sse3 ssse3 sse41 sse42 
+
 sse2:
 	mkdir -p sse2
 	go run scanner.go  -out func > sse2/inst_amd64.go && gofmt -w sse2/inst_amd64.go

@@ -193,9 +193,17 @@ func (i *Inst) Target() (t []string) {
 		t = append(t, "float32")
 		return
 	}
+	if strings.Index(dst, "Single-FP") != -1 {
+		t = append(t, "float32")
+		return
+	}
 
 	if strings.Index(dst, "Double-Precision Floating-Point") != -1 {
-		t = append(t, "float32")
+		t = append(t, "float64")
+	}
+
+	if strings.Index(dst, "Double-FP") != -1 {
+		t = append(t, "float64")
 	}
 
 	return

@@ -6,7 +6,7 @@ func ADDPDm128byte(X1 []byte, X2 []byte)
 
 // Add Packed Double-Precision Floating-Point Values
 // go:noescape
-func ADDPDm128float32(X1 []float32, X2 []float32)
+func ADDPDm128float64(X1 []float64, X2 []float64)
 
 // Add Scalar Double-Precision Floating-Point Values
 // go:noescape
@@ -14,7 +14,7 @@ func ADDSDm64byte(X1 []byte, X2 []byte)
 
 // Add Scalar Double-Precision Floating-Point Values
 // go:noescape
-func ADDSDm64float32(X1 []float32, X2 []float32)
+func ADDSDm64float64(X1 []float64, X2 []float64)
 
 // Bitwise Logical AND NOT of Packed Double-Precision Floating-Point Values
 // go:noescape
@@ -22,7 +22,7 @@ func ANDNPDm128byte(X1 []byte, X2 []byte)
 
 // Bitwise Logical AND NOT of Packed Double-Precision Floating-Point Values
 // go:noescape
-func ANDNPDm128float32(X1 []float32, X2 []float32)
+func ANDNPDm128float64(X1 []float64, X2 []float64)
 
 // Bitwise Logical AND of Packed Double-Precision Floating-Point Values
 // go:noescape
@@ -30,7 +30,7 @@ func ANDPDm128byte(X1 []byte, X2 []byte)
 
 // Bitwise Logical AND of Packed Double-Precision Floating-Point Values
 // go:noescape
-func ANDPDm128float32(X1 []float32, X2 []float32)
+func ANDPDm128float64(X1 []float64, X2 []float64)
 
 // Compare Scalar Ordered Double-Precision Floating- Point Values and Set EFLAGS
 // go:noescape
@@ -42,7 +42,7 @@ func DIVPDm128byte(X1 []byte, X2 []byte)
 
 // Divide Packed Double-Precision Floating-Point Values
 // go:noescape
-func DIVPDm128float32(X1 []float32, X2 []float32)
+func DIVPDm128float64(X1 []float64, X2 []float64)
 
 // Divide Scalar Double-Precision Floating-Point Values
 // go:noescape
@@ -50,7 +50,7 @@ func DIVSDm64byte(X1 []byte, X2 []byte)
 
 // Divide Scalar Double-Precision Floating-Point Values
 // go:noescape
-func DIVSDm64float32(X1 []float32, X2 []float32)
+func DIVSDm64float64(X1 []float64, X2 []float64)
 
 // Store Selected Bytes of Double Quadword
 // go:noescape
@@ -66,7 +66,7 @@ func MAXSDm64byte(X1 []byte, X2 []byte)
 
 // Return Maximum Scalar Double-Precision Floating-Point Value
 // go:noescape
-func MAXSDm64float32(X1 []float32, X2 []float32)
+func MAXSDm64float64(X1 []float64, X2 []float64)
 
 // Return Minimum Packed Double-Precision Floating-Point Values
 // go:noescape
@@ -74,7 +74,7 @@ func MINPDm128byte(X1 []byte, X2 []byte)
 
 // Return Minimum Packed Double-Precision Floating-Point Values
 // go:noescape
-func MINPDm128float32(X1 []float32, X2 []float32)
+func MINPDm128float64(X1 []float64, X2 []float64)
 
 // Return Minimum Scalar Double-Precision Floating-Point Value
 // go:noescape
@@ -82,7 +82,7 @@ func MINSDm64byte(X1 []byte, X2 []byte)
 
 // Return Minimum Scalar Double-Precision Floating-Point Value
 // go:noescape
-func MINSDm64float32(X1 []float32, X2 []float32)
+func MINSDm64float64(X1 []float64, X2 []float64)
 
 // Multiply Packed Double-Precision Floating-Point Values
 // go:noescape
@@ -90,7 +90,7 @@ func MULPDm128byte(X1 []byte, X2 []byte)
 
 // Multiply Packed Double-Precision Floating-Point Values
 // go:noescape
-func MULPDm128float32(X1 []float32, X2 []float32)
+func MULPDm128float64(X1 []float64, X2 []float64)
 
 // Multiply Scalar Double-Precision Floating-Point Values
 // go:noescape
@@ -98,7 +98,7 @@ func MULSDm64byte(X1 []byte, X2 []byte)
 
 // Multiply Scalar Double-Precision Floating-Point Values
 // go:noescape
-func MULSDm64float32(X1 []float32, X2 []float32)
+func MULSDm64float64(X1 []float64, X2 []float64)
 
 // Bitwise Logical OR of Double-Precision Floating-Point Values
 // go:noescape
@@ -106,7 +106,7 @@ func ORPDm128byte(X1 []byte, X2 []byte)
 
 // Bitwise Logical OR of Double-Precision Floating-Point Values
 // go:noescape
-func ORPDm128float32(X1 []float32, X2 []float32)
+func ORPDm128float64(X1 []float64, X2 []float64)
 
 // Pack with Signed Saturation
 // go:noescape
@@ -462,7 +462,7 @@ func SQRTPDm128byte(X1 []byte, X2 []byte)
 
 // Compute Square Roots of Packed Double-Precision Floating-Point Values
 // go:noescape
-func SQRTPDm128float32(X1 []float32, X2 []float32)
+func SQRTPDm128float64(X1 []float64, X2 []float64)
 
 // Compute Square Root of Scalar Double-Precision Floating-Point Value
 // go:noescape
@@ -470,7 +470,7 @@ func SQRTSDm64byte(X1 []byte, X2 []byte)
 
 // Compute Square Root of Scalar Double-Precision Floating-Point Value
 // go:noescape
-func SQRTSDm64float32(X1 []float32, X2 []float32)
+func SQRTSDm64float64(X1 []float64, X2 []float64)
 
 // Subtract Packed Double-Precision Floating-Point Values
 // go:noescape
@@ -478,7 +478,7 @@ func SUBPDm128byte(X1 []byte, X2 []byte)
 
 // Subtract Packed Double-Precision Floating-Point Values
 // go:noescape
-func SUBPDm128float32(X1 []float32, X2 []float32)
+func SUBPDm128float64(X1 []float64, X2 []float64)
 
 // Subtract Scalar Double-Precision Floating-Point Values
 // go:noescape
@@ -486,7 +486,7 @@ func SUBSDm64byte(X1 []byte, X2 []byte)
 
 // Subtract Scalar Double-Precision Floating-Point Values
 // go:noescape
-func SUBSDm64float32(X1 []float32, X2 []float32)
+func SUBSDm64float64(X1 []float64, X2 []float64)
 
 // Unordered Compare Scalar Double-Precision Floating- Point Values and Set EFLAGS
 // go:noescape
@@ -502,7 +502,7 @@ func UNPCKLPDm128byte(X1 []byte, X2 []byte)
 
 // Unpack and Interleave Low Packed Double-Precision Floating-Point Values
 // go:noescape
-func UNPCKLPDm128float32(X1 []float32, X2 []float32)
+func UNPCKLPDm128float64(X1 []float64, X2 []float64)
 
 // Bitwise Logical XOR for Double-Precision Floating-Point Values
 // go:noescape
@@ -510,4 +510,4 @@ func XORPDm128byte(X1 []byte, X2 []byte)
 
 // Bitwise Logical XOR for Double-Precision Floating-Point Values
 // go:noescape
-func XORPDm128float32(X1 []float32, X2 []float32)
+func XORPDm128float64(X1 []float64, X2 []float64)
