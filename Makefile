@@ -5,7 +5,7 @@ sse2:
 
 sse3:
 	mkdir -p sse3
-	go run scanner.go -feature sse3 -out func > sse3/inst_amd64.go
+	go run scanner.go -feature sse3 -out func > sse3/inst_amd64.go && gofmt -w sse3/inst_amd64.go
 	go run scanner.go -feature sse3 -out asm > sse3/inst_amd64.s
 
 ssse3:
