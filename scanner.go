@@ -427,6 +427,7 @@ const X1X2imm8u = `
 	FPTOX1X2
 	MOVQ c+48(FP), CX
 	IMMX(%s)
+	RETX1X2
 `
 const asmTmpl = `#include "textflag.h"
 
@@ -438,14 +439,16 @@ const asmTmpl = `#include "textflag.h"
 
 #define RETX1X2 \
 	MOVOU X1, (SI);\
+	MOVOU X2, (DI);\
 	RET;\
 
 #define IMMX(OPCODE) \
-	ADDQ PC, CX; \
-	JMP CX;		\
-	OPCODE X1, X2, 0;\
-	MOVOU X1, (DI);\
-	RET
+	CMPQ imm8u+48(FP), $0; \
+	JNE 2(PC); \
+	OPCODE $0, X1, X2;\
+	CMPQ imm8u+48(FP), $1; \
+	JNE 2(PC); \
+	OPCODE $0, X1, X2;\
 
 {{ range $index, $inst := .InstList }}
 {{ range $target := .Target }}

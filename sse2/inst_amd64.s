@@ -8,14 +8,16 @@
 
 #define RETX1X2 \
 	MOVOU X1, (SI);\
+	MOVOU X2, (DI);\
 	RET;\
 
 #define IMMX(OPCODE) \
-	ADDQ PC, CX; \
-	JMP CX;		\
-	OPCODE X1, X2, 0;\
-	MOVOU X1, (DI);\
-	RET
+	CMPQ imm8u+48(FP), $0; \
+	JNE 2(PC); \
+	OPCODE $0, X1, X2;\
+	CMPQ imm8u+48(FP), $1; \
+	JNE 2(PC); \
+	OPCODE $0, X1, X2;\
 
 
 
@@ -780,6 +782,7 @@ TEXT ·SHUFPDm128byte(SB),NOSPLIT,$0-56
 	FPTOX1X2
 	MOVQ c+48(FP), CX
 	IMMX(SHUFPD)
+	RETX1X2
 
 
 TEXT ·SHUFPDm128float32(SB),NOSPLIT,$0-56
@@ -787,6 +790,7 @@ TEXT ·SHUFPDm128float32(SB),NOSPLIT,$0-56
 	FPTOX1X2
 	MOVQ c+48(FP), CX
 	IMMX(SHUFPD)
+	RETX1X2
 
 
 
