@@ -4,20 +4,35 @@ package ssse3
 
 // go:noescape
 
-// Packed Absolute Value
+// Packed Absolute Value Unsigned Integers
 func PABSBm128byte(X1 []byte,  X2 []byte)
 
+// go:noescape
+
+// Packed Absolute Value Unsigned Integers
+func PABSBm128uint8(X1 []uint8,  X2 []uint8)
+
 
 // go:noescape
 
-// Packed Absolute Value
+// Packed Absolute Value Unsigned Integers
 func PABSDm128byte(X1 []byte,  X2 []byte)
 
+// go:noescape
+
+// Packed Absolute Value Unsigned Integers
+func PABSDm128uint32(X1 []uint32,  X2 []uint32)
+
 
 // go:noescape
 
-// Packed Absolute Value
+// Packed Absolute Value Unsigned Integers
 func PABSWm128byte(X1 []byte,  X2 []byte)
+
+// go:noescape
+
+// Packed Absolute Value Unsigned Integers
+func PABSWm128uint16(X1 []uint16,  X2 []uint16)
 
 
 // go:noescape
