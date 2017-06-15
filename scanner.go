@@ -306,7 +306,8 @@ func makeInst(feature string, instList []*Inst) {
 		gen += 1
 		skipedInst = append(skipedInst, inst)
 	}
-	log.Printf("%s gen=%d, skip=%d, ratio=%0.2f%%", feature, gen, len(instList)-gen,
+	log.Printf("%s gen=%d, total=%d, ratio=%0.2f%%", feature,
+		gen, len(instList),
 		float64(gen)/float64(len(instList))*100)
 	dat := &Data{*plaform, feature, skipedInst}
 	tmpl := funcTmpl
