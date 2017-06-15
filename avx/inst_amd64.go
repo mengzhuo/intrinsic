@@ -364,25 +364,25 @@ func VSQRTPSm256byte(Y1 []byte,  Y2 []byte)
 
 // go:noescape
 
-// 
+// Packed Bit Test
 func VTESTPDm128byte(X1 []byte,  X2 []byte)
 
 
 // go:noescape
 
-// 
+// Packed Bit Test
 func VTESTPDm256byte(Y1 []byte,  Y2 []byte)
 
 
 // go:noescape
 
-// 
+// Packed Bit Test
 func VTESTPSm128byte(X1 []byte,  X2 []byte)
 
 
 // go:noescape
 
-// 
+// Packed Bit Test
 func VTESTPSm256byte(Y1 []byte,  Y2 []byte)
 
 

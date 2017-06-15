@@ -42,8 +42,13 @@ func ANDPDm128float64(X1 []float64, X2 []float64)
 
 // go:noescape
 
-// Compare Scalar Ordered Double-Precision Floating- Point Values and Set EFLAGS
+// Compare Scalar Ordered Double-Precision Floating-Point Values and Set EFLAGS
 func COMISDm64byte(X1 []byte, X2 []byte)
+
+// go:noescape
+
+// Compare Scalar Ordered Double-Precision Floating-Point Values and Set EFLAGS
+func COMISDm64float64(X1 []float64, X2 []float64)
 
 // go:noescape
 
@@ -72,8 +77,13 @@ func MASKMOVDQUbyte(X1 []byte, X2 []byte)
 
 // go:noescape
 
-// Return Maximum Packed Double-Precision Floating- Point Values
+// Return Maximum Packed Double-Precision Floating-Point Values
 func MAXPDm128byte(X1 []byte, X2 []byte)
+
+// go:noescape
+
+// Return Maximum Packed Double-Precision Floating-Point Values
+func MAXPDm128float64(X1 []float64, X2 []float64)
 
 // go:noescape
 
@@ -612,13 +622,23 @@ func SUBSDm64float64(X1 []float64, X2 []float64)
 
 // go:noescape
 
-// Unordered Compare Scalar Double-Precision Floating- Point Values and Set EFLAGS
+// Unordered Compare Scalar Double-Precision Floating-Point Values and Set EFLAGS
 func UCOMISDm64byte(X1 []byte, X2 []byte)
 
 // go:noescape
 
-// Unpack and Interleave High Packed Double- Precision Floating-Point Values
+// Unordered Compare Scalar Double-Precision Floating-Point Values and Set EFLAGS
+func UCOMISDm64float64(X1 []float64, X2 []float64)
+
+// go:noescape
+
+// Unpack and Interleave High Packed Double-Precision Floating-Point Values
 func UNPCKHPDm128byte(X1 []byte, X2 []byte)
+
+// go:noescape
+
+// Unpack and Interleave High Packed Double-Precision Floating-Point Values
+func UNPCKHPDm128float64(X1 []float64, X2 []float64)
 
 // go:noescape
 

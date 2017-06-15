@@ -1,6 +1,6 @@
 .PHONY: all
 	
-all : sse2 sse3 ssse3 sse41 sse42 
+all : sse2 sse3 ssse3 sse41 sse42 avx avx2
 
 sse2:
 	mkdir -p sse2
