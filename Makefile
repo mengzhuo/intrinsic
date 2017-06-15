@@ -26,3 +26,12 @@ sse42:
 	mkdir -p sse42
 	go run scanner.go -feature sse42 -out func > sse42/inst_amd64.go
 	go run scanner.go -feature sse42 -out asm > sse42/inst_amd64.s
+
+avx:
+	mkdir -p avx
+	go run scanner.go -feature avx -out func > avx/inst_amd64.go
+	go run scanner.go -feature avx -out asm > avx/inst_amd64.s
+avx2:
+	mkdir -p avx2
+	go run scanner.go -feature avx2 -out func > avx2/inst_amd64.go
+	go run scanner.go -feature avx2 -out asm > avx2/inst_amd64.s

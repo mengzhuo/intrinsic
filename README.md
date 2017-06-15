@@ -50,6 +50,6 @@ x86.csv and x86desc.csv are from another repos in https://github.com/mengzhuo/x8
 - [ ] SSSE3 gen=15, total=32, ratio=46.88%
 - [ ] SSE4\_1  gen=26, total=49, ratio=53.06%
 - [ ] SSE4\_2  gen=1, total=5, ratio=20.00%
-- [ ] AVX
-- [ ] AVX2
+- [ ] AVX  gen=66, total=378, ratio=17.46%
+- [ ] AVX2 gen=8, total=159, ratio=5.03%
 - [ ] FMA
