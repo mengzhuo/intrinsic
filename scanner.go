@@ -200,10 +200,12 @@ func (i *Inst) Target() (t []string) {
 
 	if strings.Index(dst, "Double-Precision Floating-Point") != -1 {
 		t = append(t, "float64")
+		return
 	}
 
 	if strings.Index(dst, "Double-FP") != -1 {
 		t = append(t, "float64")
+		return
 	}
 
 	return
