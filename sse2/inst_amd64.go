@@ -22,22 +22,22 @@ func ADDSDm64float64(X1 []float64, X2 []float64)
 
 // go:noescape
 
-// Bitwise Logical AND NOT of Packed Double-Precision Floating-Point Values
+// Bitwise Logical AND NOT of Packed Double Precision Floating-Point Values
 func ANDNPDm128byte(X1 []byte, X2 []byte)
 
 // go:noescape
 
-// Bitwise Logical AND NOT of Packed Double-Precision Floating-Point Values
+// Bitwise Logical AND NOT of Packed Double Precision Floating-Point Values
 func ANDNPDm128float64(X1 []float64, X2 []float64)
 
 // go:noescape
 
-// Bitwise Logical AND of Packed Double-Precision Floating-Point Values
+// Bitwise Logical AND of Packed Double Precision Floating-Point Values
 func ANDPDm128byte(X1 []byte, X2 []byte)
 
 // go:noescape
 
-// Bitwise Logical AND of Packed Double-Precision Floating-Point Values
+// Bitwise Logical AND of Packed Double Precision Floating-Point Values
 func ANDPDm128float64(X1 []float64, X2 []float64)
 
 // go:noescape
@@ -62,12 +62,12 @@ func DIVPDm128float64(X1 []float64, X2 []float64)
 
 // go:noescape
 
-// Divide Scalar Double-Precision Floating-Point Values
+// Divide Scalar Double-Precision Floating-Point Value
 func DIVSDm64byte(X1 []byte, X2 []byte)
 
 // go:noescape
 
-// Divide Scalar Double-Precision Floating-Point Values
+// Divide Scalar Double-Precision Floating-Point Value
 func DIVSDm64float64(X1 []float64, X2 []float64)
 
 // go:noescape
@@ -77,12 +77,12 @@ func MASKMOVDQUbyte(X1 []byte, X2 []byte)
 
 // go:noescape
 
-// Return Maximum Packed Double-Precision Floating-Point Values
+// Maximum of Packed Double-Precision Floating-Point Values
 func MAXPDm128byte(X1 []byte, X2 []byte)
 
 // go:noescape
 
-// Return Maximum Packed Double-Precision Floating-Point Values
+// Maximum of Packed Double-Precision Floating-Point Values
 func MAXPDm128float64(X1 []float64, X2 []float64)
 
 // go:noescape
@@ -97,12 +97,12 @@ func MAXSDm64float64(X1 []float64, X2 []float64)
 
 // go:noescape
 
-// Return Minimum Packed Double-Precision Floating-Point Values
+// Minimum of Packed Double-Precision Floating-Point Values
 func MINPDm128byte(X1 []byte, X2 []byte)
 
 // go:noescape
 
-// Return Minimum Packed Double-Precision Floating-Point Values
+// Minimum of Packed Double-Precision Floating-Point Values
 func MINPDm128float64(X1 []float64, X2 []float64)
 
 // go:noescape
@@ -127,22 +127,22 @@ func MULPDm128float64(X1 []float64, X2 []float64)
 
 // go:noescape
 
-// Multiply Scalar Double-Precision Floating-Point Values
+// Multiply Scalar Double-Precision Floating-Point Value
 func MULSDm64byte(X1 []byte, X2 []byte)
 
 // go:noescape
 
-// Multiply Scalar Double-Precision Floating-Point Values
+// Multiply Scalar Double-Precision Floating-Point Value
 func MULSDm64float64(X1 []float64, X2 []float64)
 
 // go:noescape
 
-// Bitwise Logical OR of Double-Precision Floating-Point Values
+// Bitwise Logical OR of Packed Double Precision Floating-Point Values
 func ORPDm128byte(X1 []byte, X2 []byte)
 
 // go:noescape
 
-// Bitwise Logical OR of Double-Precision Floating-Point Values
+// Bitwise Logical OR of Packed Double Precision Floating-Point Values
 func ORPDm128float64(X1 []float64, X2 []float64)
 
 // go:noescape
@@ -182,12 +182,12 @@ func PADDDm128int32(X1 []int32, X2 []int32)
 
 // go:noescape
 
-// Add Packed Quadword Integers
+// Add Packed Integers
 func PADDQm128byte(X1 []byte, X2 []byte)
 
 // go:noescape
 
-// Add Packed Quadword Integers
+// Add Packed Integers
 func PADDQm128int64(X1 []int64, X2 []int64)
 
 // go:noescape
@@ -327,42 +327,42 @@ func PMADDWDm128int32(X1 []int32, X2 []int32)
 
 // go:noescape
 
-// Maximum of Packed Signed Word Integers
+// Maximum of Packed Signed Integers
 func PMAXSWm128byte(X1 []byte, X2 []byte)
 
 // go:noescape
 
-// Maximum of Packed Signed Word Integers
+// Maximum of Packed Signed Integers
 func PMAXSWm128int16(X1 []int16, X2 []int16)
 
 // go:noescape
 
-// Maximum of Packed Unsigned Byte Integers
+// Maximum of Packed Unsigned Integers
 func PMAXUBm128byte(X1 []byte, X2 []byte)
 
 // go:noescape
 
-// Maximum of Packed Unsigned Byte Integers
+// Maximum of Packed Unsigned Integers
 func PMAXUBm128uint8(X1 []uint8, X2 []uint8)
 
 // go:noescape
 
-// Minimum of Packed Signed Word Integers
+// Minimum of Packed Signed Integers
 func PMINSWm128byte(X1 []byte, X2 []byte)
 
 // go:noescape
 
-// Minimum of Packed Signed Word Integers
+// Minimum of Packed Signed Integers
 func PMINSWm128int16(X1 []int16, X2 []int16)
 
 // go:noescape
 
-// Minimum of Packed Unsigned Byte Integers
+// Minimum of Packed Unsigned Integers
 func PMINUBm128byte(X1 []byte, X2 []byte)
 
 // go:noescape
 
-// Minimum of Packed Unsigned Byte Integers
+// Minimum of Packed Unsigned Integers
 func PMINUBm128uint8(X1 []uint8, X2 []uint8)
 
 // go:noescape
@@ -582,12 +582,12 @@ func PXORm128byte(X1 []byte, X2 []byte)
 
 // go:noescape
 
-// Compute Square Roots of Packed Double-Precision Floating-Point Values
+// Square Root of Double-Precision Floating-Point Values
 func SQRTPDm128byte(X1 []byte, X2 []byte)
 
 // go:noescape
 
-// Compute Square Roots of Packed Double-Precision Floating-Point Values
+// Square Root of Double-Precision Floating-Point Values
 func SQRTPDm128float64(X1 []float64, X2 []float64)
 
 // go:noescape
@@ -612,12 +612,12 @@ func SUBPDm128float64(X1 []float64, X2 []float64)
 
 // go:noescape
 
-// Subtract Scalar Double-Precision Floating-Point Values
+// Subtract Scalar Double-Precision Floating-Point Value
 func SUBSDm64byte(X1 []byte, X2 []byte)
 
 // go:noescape
 
-// Subtract Scalar Double-Precision Floating-Point Values
+// Subtract Scalar Double-Precision Floating-Point Value
 func SUBSDm64float64(X1 []float64, X2 []float64)
 
 // go:noescape
@@ -652,10 +652,10 @@ func UNPCKLPDm128float64(X1 []float64, X2 []float64)
 
 // go:noescape
 
-// Bitwise Logical XOR for Double-Precision Floating-Point Values
+// Bitwise Logical XOR of Packed Double Precision Floating-Point Values
 func XORPDm128byte(X1 []byte, X2 []byte)
 
 // go:noescape
 
-// Bitwise Logical XOR for Double-Precision Floating-Point Values
+// Bitwise Logical XOR of Packed Double Precision Floating-Point Values
 func XORPDm128float64(X1 []float64, X2 []float64)
