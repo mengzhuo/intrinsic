@@ -22,3 +22,5 @@ _testmain.go
 *.exe
 *.test
 *.prof
+x86.csv
+x86desc.csv
