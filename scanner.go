@@ -432,6 +432,17 @@ const asmTmpl = `#include "textflag.h"
 	MOVOU X2, (DI);\
 	RET;\
 
+#define FPTOY1Y2 \
+	MOVQ a+0(FP), SI;\
+	MOVQ b+24(FP), DI;\
+	MOVOU (SI), Y1;\
+	MOVOU (DI), Y2;\
+
+#define RETY1Y2 \
+	MOVOU Y1, (SI);\
+	MOVOU Y2, (DI);\
+	RET;\
+
 {{ range $index, $inst := .InstList }}
 {{ range $target := .Target }}
 TEXT ·{{$inst.FuncName}}{{$inst.Register}}{{$target}}(SB),NOSPLIT,$0-{{$inst.FrameSize}}
