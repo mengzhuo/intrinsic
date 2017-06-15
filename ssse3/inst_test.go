@@ -1,13 +1,10 @@
 package ssse3
 
-import (
-	"bytes"
-	"testing"
-)
+import "testing"
 
-func TestPSHUFBm128byte(t *testing.T) {
-	a := bytes.Repeat([]byte{2}, 16)
-	b := bytes.Repeat([]byte{1}, 16)
-	PSHUFBm128byte(a, b)
+func TestPABSB(t *testing.T) {
+	a := []int8{2, 2, 0, 0, 3, -1, -2, 2, 2, 0, 0, 3, -1, -2, -9, -10}
+	b := []int8{-1, -2, -3, -4, -5, -6, -7, -8, -1, -2, -3, -4, -5, -6, -7, -8}
+	PABSBm128int8(a, b)
 	t.Log(a, b)
 }
