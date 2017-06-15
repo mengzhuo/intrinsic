@@ -364,24 +364,6 @@ func (i *Inst) ArgsToAsm() string {
 	return strings.Join(buf, "\n\t")
 }
 
-var unrecognized = set(`
-PACKSSDW
-PCMPEQD
-PCMPGTD
-PMADDWD
-PMADDWD
-PMULUDQ
-PMULUDQ
-PSLLD
-PSRAD
-PSRLD
-PSUBD
-PUNPCKHDQ
-PUNPCKHWD
-PUNPCKLDQ
-PUNPCKLWD
-`)
-
 func set(s string) (r map[string]struct{}) {
 	r = map[string]struct{}{}
 	for _, n := range strings.Split(s, "\n") {
@@ -457,3 +439,21 @@ TEXT ·{{$inst.FuncName}}{{$inst.Register}}{{$target}}(SB),NOSPLIT,$0-{{$inst.Fr
 {{end}}{{end}}
 
 `
+
+var unrecognized = set(`
+PACKSSDW
+PCMPEQD
+PCMPGTD
+PMADDWD
+PMADDWD
+PMULUDQ
+PMULUDQ
+PSLLD
+PSRAD
+PSRLD
+PSUBD
+PUNPCKHDQ
+PUNPCKHWD
+PUNPCKLDQ
+PUNPCKLWD
+`)
