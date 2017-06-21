@@ -24,3 +24,4 @@ _testmain.go
 *.prof
 x86.csv
 x86desc.csv
+.tmp_scanner
