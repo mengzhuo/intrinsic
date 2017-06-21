@@ -331,7 +331,7 @@ func makeInst(feature string, instList []*Inst) {
 		gen += 1
 		genInst = append(genInst, inst)
 	}
-
+	sort.Sort(byName(genInst))
 	for _, inst := range skipedInst {
 		log.Printf("skiped=%s %s(%d)", inst.FuncName, inst.Args, len(inst.Args))
 	}
@@ -533,3 +533,17 @@ PMINUW
 PMINUW
 PTEST
 `)
+
+type byName []*Inst
+
+func (b byName) Len() int {
+	return len(b)
+}
+
+func (b byName) Less(i int, j int) bool {
+	return b[i].FuncName < b[j].FuncName
+}
+
+func (b byName) Swap(i int, j int) {
+	b[i], b[j] = b[j], b[i]
+}
