@@ -64,6 +64,8 @@ func ParseInst(l []string) (i *Inst) {
 			t = "X1"
 		case "xmm2":
 			t = "X2"
+		case "xmm3":
+			t = "X3"
 		case "mm1":
 			t = "M1"
 		case "mm2":
@@ -74,6 +76,8 @@ func ParseInst(l []string) (i *Inst) {
 			t = "Y1"
 		case "ymm2":
 			t = "Y2"
+		case "ymm3":
+			t = "Y3"
 		}
 		i.Args[j] = t
 	}
@@ -288,35 +292,48 @@ type Data struct {
 }
 
 var skipInst = map[string]int{
-	"MOV": 1,
-	"CVT": 1,
+	"MOV":  1,
+	"CVT":  1,
+	"VMOV": 1,
+	"VCVT": 1,
 }
 
 func makeInst(feature string, instList []*Inst) {
 
 	argsTable := map[string]int{}
+	genInst := []*Inst{}
 	skipedInst := []*Inst{}
+
 	var gen int
 	for _, inst := range instList {
 		if _, ok := skipInst[inst.FuncName[:3]]; ok {
+			continue
+		}
+		if _, ok := skipInst[inst.FuncName[:4]]; ok {
 			continue
 		}
 
 		if inst.Valid64 == "V" {
 			argsTable[fmt.Sprintf("%v", inst.Args)] += 1
 		}
+
 		switch fmt.Sprint(inst.Args) {
 		case "[X1 X2]":
 		case "[Y1 Y2]":
 		default:
+			skipedInst = append(skipedInst, inst)
 			continue
 		}
 		gen += 1
-		skipedInst = append(skipedInst, inst)
+		genInst = append(genInst, inst)
+	}
+	for _, inst := range skipedInst {
+		log.Printf("skiped=%s %s", inst.FuncName, inst.Args)
 	}
 	log.Printf("%s gen=%d, total=%d, ratio=%0.2f%%", feature,
 		gen, len(instList),
 		float64(gen)/float64(len(instList))*100)
+
 	dat := &Data{*plaform, feature, skipedInst}
 	tmpl := funcTmpl
 	switch *outPath {
