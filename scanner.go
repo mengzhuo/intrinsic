@@ -99,7 +99,7 @@ func (i *Inst) CovertArgs(t string) string {
 
 	for i, k := range args {
 		switch k {
-		case "X1", "X2", "M1", "M2", "Y1", "Y2":
+		case "X1", "X2", "M1", "M2", "Y1", "Y2", "X3", "Y3":
 			k = k + " []" + t
 		case "r32":
 			k = "r32 int32"
@@ -131,7 +131,7 @@ func (i *Inst) FrameSize() (s int) {
 
 	for _, a := range i.Args {
 		switch a {
-		case "X1", "X2", "M1", "M2", "Y1", "Y2":
+		case "X1", "X2", "M1", "M2", "Y1", "Y2", "Y3", "X3":
 			s += 24 // slice size 24
 		case "r32":
 			s += 4
@@ -320,6 +320,7 @@ func makeInst(feature string, instList []*Inst) {
 		switch fmt.Sprint(inst.Args) {
 		case "[X1 X2]":
 		case "[Y1 Y2]":
+		case "[X1 X2 X3]":
 		default:
 			skipedInst = append(skipedInst, inst)
 			continue
@@ -327,14 +328,15 @@ func makeInst(feature string, instList []*Inst) {
 		gen += 1
 		genInst = append(genInst, inst)
 	}
+
 	for _, inst := range skipedInst {
-		log.Printf("skiped=%s %s", inst.FuncName, inst.Args)
+		log.Printf("skiped=%s %s(%d)", inst.FuncName, inst.Args, len(inst.Args))
 	}
 	log.Printf("%s gen=%d, total=%d, ratio=%0.2f%%", feature,
 		gen, len(instList),
 		float64(gen)/float64(len(instList))*100)
 
-	dat := &Data{*plaform, feature, skipedInst}
+	dat := &Data{*plaform, feature, genInst}
 	tmpl := funcTmpl
 	switch *outPath {
 	case "asm":
@@ -352,15 +354,6 @@ func makeInst(feature string, instList []*Inst) {
 	}
 }
 
-var stepMap = map[string]int{
-	"X1":    24,
-	"X2":    24,
-	"M2":    24,
-	"M1":    24,
-	"imm8u": 1,
-	"r32":   4,
-}
-
 func (i *Inst) ArgsToAsm() string {
 	buf := []string{}
 	switch fmt.Sprintf("%v", i.Args) {
@@ -370,11 +363,18 @@ func (i *Inst) ArgsToAsm() string {
 		}
 		return fmt.Sprintf(X1X2, i.FuncName)
 
+	case "[X1 X2 X3]":
+		if _, in := unrecognized[i.FuncName]; in {
+			return fmt.Sprintf(X1X2X3, i.TrueOpcode())
+		}
+		return fmt.Sprintf(X1X2X3, i.FuncName)
+
 	case "[Y1 Y2]":
 		if _, in := unrecognized[i.FuncName]; in {
 			return fmt.Sprintf(Y1Y2Raw, i.TrueOpcode())
 		}
 		return fmt.Sprintf(Y1Y2, i.FuncName)
+
 	default:
 		log.Printf("unsupported args, %s", i.FuncName)
 	}
@@ -427,6 +427,15 @@ const Y1Y2 = `
 	MOVOU Y1, (SI)
 	RET
 	`
+
+const X1X2X3 = `
+	FPTOX1X2X3
+	%s X3, X2, X1
+	MOVOU X1, (SI)
+	MOVOU X2, (DI)
+	RET
+	`
+
 const Y1Y2Raw = `
 	MOVQ a+0(FP), SI
 	MOVQ b+24(FP), DI
@@ -454,6 +463,14 @@ const asmTmpl = `#include "textflag.h"
 	MOVQ b+24(FP), DI;\
 	MOVOU (SI), Y1;\
 	MOVOU (DI), Y2;\
+
+#define FPTOX1X2X3 \
+	MOVQ a+0(FP), SI;\
+	MOVQ b+24(FP), DI;\
+	MOVOU (SI), X1;\
+	MOVOU (DI), X2;\
+	MOVQ c+48(FP), DI;\
+	MOVOU (DI), X3;\
 
 #define RETY1Y2 \
 	MOVOU Y1, (SI);\
