@@ -1,37 +1,29 @@
-.PHONY: all
-	
-all : sse2 sse3 ssse3 sse41 sse42 avx avx2
+scanner:
+	rm scanner
+	go build scanner.go
 
-sse2:
-	mkdir -p sse2
-	go run scanner.go  -out func > sse2/inst_amd64.go && gofmt -w sse2/inst_amd64.go
-	go run scanner.go  -out asm > sse2/inst_amd64.s 
+%/inst_amd64.go: scanner
+	mkdir -p `dirname $@`
+	./scanner -out func > $@ && gofmt -w $@
 
-sse3:
-	mkdir -p sse3
-	go run scanner.go -feature sse3 -out func > sse3/inst_amd64.go && gofmt -w sse3/inst_amd64.go
-	go run scanner.go -feature sse3 -out asm > sse3/inst_amd64.s
+%/inst_amd64.s: scanner
+	mkdir -p `dirname $@`
+	./scanner -out asm > $@ 
 
-ssse3:
-	mkdir -p ssse3
-	go run scanner.go -feature ssse3 -out func > ssse3/inst_amd64.go
-	go run scanner.go -feature ssse3 -out asm > ssse3/inst_amd64.s
 
-sse41:
-	mkdir -p sse41
-	go run scanner.go -feature sse41 -out func > sse41/inst_amd64.go
-	go run scanner.go -feature sse41 -out asm > sse41/inst_amd64.s
+sse2: sse2/*
+sse3: sse3/inst_*
+ssse3: ssse3/*
+#sse41: scanner sse41/inst_*
+#sse42: scanner sse42/*
+#avx: scanner avx/*
+#avx2: scanner avx2/*
 
-sse42:
-	mkdir -p sse42
-	go run scanner.go -feature sse42 -out func > sse42/inst_amd64.go
-	go run scanner.go -feature sse42 -out asm > sse42/inst_amd64.s
 
-avx:
-	mkdir -p avx
-	go run scanner.go -feature avx -out func > avx/inst_amd64.go
-	go run scanner.go -feature avx -out asm > avx/inst_amd64.s
-avx2:
-	mkdir -p avx2
-	go run scanner.go -feature avx2 -out func > avx2/inst_amd64.go
-	go run scanner.go -feature avx2 -out asm > avx2/inst_amd64.s
+clean: 
+	rm */inst_a*
+
+all: scanner sse2 sse3 ssse3 #sse41 sse42 avx avx2
+	echo "all"
+
+.PHONY: all clean
