@@ -309,8 +309,11 @@ func makeInst(feature string, instList []*Inst) {
 		if _, ok := skipInst[inst.FuncName[:3]]; ok {
 			continue
 		}
-		if _, ok := skipInst[inst.FuncName[:4]]; ok {
-			continue
+
+		if len(inst.FuncName) >= 4 {
+			if _, ok := skipInst[inst.FuncName[:4]]; ok {
+				continue
+			}
 		}
 
 		if inst.Valid64 == "V" {
@@ -511,4 +514,22 @@ PMULHRSW
 PSIGNB
 PSIGND
 PSIGNW
+PACKUSDW
+PCMPEQQ
+PMAXSB
+PMAXSB
+PMAXSD
+PMAXSD
+PMAXUD
+PMAXUD
+PMAXUW
+PMAXUW
+PMINSB
+PMINSD
+PMINSD
+PMINUD
+PMINUD
+PMINUW
+PMINUW
+PTEST
 `)

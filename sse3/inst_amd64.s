@@ -17,6 +17,14 @@
 	MOVOU (SI), Y1;\
 	MOVOU (DI), Y2;\
 
+#define FPTOX1X2X3 \
+	MOVQ a+0(FP), SI;\
+	MOVQ b+24(FP), DI;\
+	MOVOU (SI), X1;\
+	MOVOU (DI), X2;\
+	MOVQ c+48(FP), DI;\
+	MOVOU (DI), X3;\
+
 #define RETY1Y2 \
 	MOVOU Y1, (SI);\
 	MOVOU Y2, (DI);\
