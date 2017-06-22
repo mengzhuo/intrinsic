@@ -434,10 +434,7 @@ const X1X2Raw = `FPTOX1X2
 	RETX1X2
 	`
 const Y1Y2 = `
-	MOVQ a+0(FP), SI
-	MOVQ b+24(FP), DI
-	MOVOU (SI), Y1
-	MOVOU (DI), Y2
+	FPTOY1Y2
 	%s Y2, Y1
 	MOVOU Y1, (SI)
 	RET
@@ -452,10 +449,7 @@ const X1X2X3 = `
 	`
 
 const Y1Y2Raw = `
-	MOVQ a+0(FP), SI
-	MOVQ b+24(FP), DI
-	MOVOU (SI), Y1
-	MOVOU (DI), Y2
+	FPTOY1Y2
 	%s BYTE $0xca // $0xca = X2, X1
 	MOVOU Y1, (SI)
 	RET
