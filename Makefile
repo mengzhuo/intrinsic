@@ -8,10 +8,11 @@ scanner:
 define gen
 	@mkdir -p $1
 	@./.tmp_scanner -out func -feature $1 > $1/inst_amd64.go
-	@gofmt -w $1
+	@gofmt -w $1/inst_amd64.go
 
-	@mkdir -p $1
 	@./.tmp_scanner -out asm -feature $1 > $1/inst_amd64.s
+	@./.tmp_scanner -out test -feature $1 > $1/inst_test.go
+	@gofmt -w $1/inst_test.go
 
 endef
 
@@ -20,7 +21,7 @@ define testfunc
 endef
 
 
-feature_list := sse2 sse3 ssse3 sse41 sse42 avx avx2
+feature_list := sse2 sse3 ssse3 sse41 sse42 #avx avx2
 
 test: 
 	$(foreach feature, $(feature_list), $(call testfunc, $(feature)))

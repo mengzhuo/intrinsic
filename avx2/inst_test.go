@@ -1,6 +1,6 @@
-package ssse3
+package avx2
 
-func TestPABSBm128byte(t *testing.T) {
+func TestVBROADCASTSSbyte(t *testing.T) {
 	a := make([]byte, 64)
 	aT := make([]byte, 64)
 	for i := 0; i < len(a); i++ {
@@ -15,34 +15,13 @@ func TestPABSBm128byte(t *testing.T) {
 	}
 	copy(bT, b)
 
-	PABSBm128byte(a, b)
+	VBROADCASTSSbyte(a, b)
 	if a[0] == aT[0] && b[0] == bT[0] {
-		t.Error("Nothing changed on PABSB")
+		t.Error("Nothing changed on VBROADCASTSS")
 	}
 }
 
-func TestPABSBm128int8(t *testing.T) {
-	a := make([]int8, 64)
-	aT := make([]int8, 64)
-	for i := 0; i < len(a); i++ {
-		a[i] = 1
-	}
-	copy(aT, a)
-
-	b := make([]int8, 64)
-	bT := make([]int8, 64)
-	for i := 0; i < len(b); i++ {
-		b[i] = 2
-	}
-	copy(bT, b)
-
-	PABSBm128int8(a, b)
-	if a[0] == aT[0] && b[0] == bT[0] {
-		t.Error("Nothing changed on PABSB")
-	}
-}
-
-func TestPABSDm128byte(t *testing.T) {
+func TestVPABSBm256byte(t *testing.T) {
 	a := make([]byte, 64)
 	aT := make([]byte, 64)
 	for i := 0; i < len(a); i++ {
@@ -57,34 +36,13 @@ func TestPABSDm128byte(t *testing.T) {
 	}
 	copy(bT, b)
 
-	PABSDm128byte(a, b)
+	VPABSBm256byte(a, b)
 	if a[0] == aT[0] && b[0] == bT[0] {
-		t.Error("Nothing changed on PABSD")
+		t.Error("Nothing changed on VPABSB")
 	}
 }
 
-func TestPABSDm128int32(t *testing.T) {
-	a := make([]int32, 64)
-	aT := make([]int32, 64)
-	for i := 0; i < len(a); i++ {
-		a[i] = 1
-	}
-	copy(aT, a)
-
-	b := make([]int32, 64)
-	bT := make([]int32, 64)
-	for i := 0; i < len(b); i++ {
-		b[i] = 2
-	}
-	copy(bT, b)
-
-	PABSDm128int32(a, b)
-	if a[0] == aT[0] && b[0] == bT[0] {
-		t.Error("Nothing changed on PABSD")
-	}
-}
-
-func TestPABSWm128byte(t *testing.T) {
+func TestVPABSDm256byte(t *testing.T) {
 	a := make([]byte, 64)
 	aT := make([]byte, 64)
 	for i := 0; i < len(a); i++ {
@@ -99,34 +57,13 @@ func TestPABSWm128byte(t *testing.T) {
 	}
 	copy(bT, b)
 
-	PABSWm128byte(a, b)
+	VPABSDm256byte(a, b)
 	if a[0] == aT[0] && b[0] == bT[0] {
-		t.Error("Nothing changed on PABSW")
+		t.Error("Nothing changed on VPABSD")
 	}
 }
 
-func TestPABSWm128int16(t *testing.T) {
-	a := make([]int16, 64)
-	aT := make([]int16, 64)
-	for i := 0; i < len(a); i++ {
-		a[i] = 1
-	}
-	copy(aT, a)
-
-	b := make([]int16, 64)
-	bT := make([]int16, 64)
-	for i := 0; i < len(b); i++ {
-		b[i] = 2
-	}
-	copy(bT, b)
-
-	PABSWm128int16(a, b)
-	if a[0] == aT[0] && b[0] == bT[0] {
-		t.Error("Nothing changed on PABSW")
-	}
-}
-
-func TestPHADDDm128byte(t *testing.T) {
+func TestVPABSWm256byte(t *testing.T) {
 	a := make([]byte, 64)
 	aT := make([]byte, 64)
 	for i := 0; i < len(a); i++ {
@@ -141,13 +78,13 @@ func TestPHADDDm128byte(t *testing.T) {
 	}
 	copy(bT, b)
 
-	PHADDDm128byte(a, b)
+	VPABSWm256byte(a, b)
 	if a[0] == aT[0] && b[0] == bT[0] {
-		t.Error("Nothing changed on PHADDD")
+		t.Error("Nothing changed on VPABSW")
 	}
 }
 
-func TestPHADDSWm128byte(t *testing.T) {
+func TestVPBROADCASTBm8byte(t *testing.T) {
 	a := make([]byte, 64)
 	aT := make([]byte, 64)
 	for i := 0; i < len(a); i++ {
@@ -162,13 +99,13 @@ func TestPHADDSWm128byte(t *testing.T) {
 	}
 	copy(bT, b)
 
-	PHADDSWm128byte(a, b)
+	VPBROADCASTBm8byte(a, b)
 	if a[0] == aT[0] && b[0] == bT[0] {
-		t.Error("Nothing changed on PHADDSW")
+		t.Error("Nothing changed on VPBROADCASTB")
 	}
 }
 
-func TestPHADDWm128byte(t *testing.T) {
+func TestVPBROADCASTDm32byte(t *testing.T) {
 	a := make([]byte, 64)
 	aT := make([]byte, 64)
 	for i := 0; i < len(a); i++ {
@@ -183,13 +120,13 @@ func TestPHADDWm128byte(t *testing.T) {
 	}
 	copy(bT, b)
 
-	PHADDWm128byte(a, b)
+	VPBROADCASTDm32byte(a, b)
 	if a[0] == aT[0] && b[0] == bT[0] {
-		t.Error("Nothing changed on PHADDW")
+		t.Error("Nothing changed on VPBROADCASTD")
 	}
 }
 
-func TestPHSUBDm128byte(t *testing.T) {
+func TestVPBROADCASTQm64byte(t *testing.T) {
 	a := make([]byte, 64)
 	aT := make([]byte, 64)
 	for i := 0; i < len(a); i++ {
@@ -204,13 +141,13 @@ func TestPHSUBDm128byte(t *testing.T) {
 	}
 	copy(bT, b)
 
-	PHSUBDm128byte(a, b)
+	VPBROADCASTQm64byte(a, b)
 	if a[0] == aT[0] && b[0] == bT[0] {
-		t.Error("Nothing changed on PHSUBD")
+		t.Error("Nothing changed on VPBROADCASTQ")
 	}
 }
 
-func TestPHSUBSWm128byte(t *testing.T) {
+func TestVPBROADCASTWm16byte(t *testing.T) {
 	a := make([]byte, 64)
 	aT := make([]byte, 64)
 	for i := 0; i < len(a); i++ {
@@ -225,13 +162,13 @@ func TestPHSUBSWm128byte(t *testing.T) {
 	}
 	copy(bT, b)
 
-	PHSUBSWm128byte(a, b)
+	VPBROADCASTWm16byte(a, b)
 	if a[0] == aT[0] && b[0] == bT[0] {
-		t.Error("Nothing changed on PHSUBSW")
+		t.Error("Nothing changed on VPBROADCASTW")
 	}
 }
 
-func TestPHSUBWm128byte(t *testing.T) {
+func TestVPSLLVDm128byte(t *testing.T) {
 	a := make([]byte, 64)
 	aT := make([]byte, 64)
 	for i := 0; i < len(a); i++ {
@@ -246,13 +183,13 @@ func TestPHSUBWm128byte(t *testing.T) {
 	}
 	copy(bT, b)
 
-	PHSUBWm128byte(a, b)
+	VPSLLVDm128byte(a, b)
 	if a[0] == aT[0] && b[0] == bT[0] {
-		t.Error("Nothing changed on PHSUBW")
+		t.Error("Nothing changed on VPSLLVD")
 	}
 }
 
-func TestPMADDUBSWm128byte(t *testing.T) {
+func TestVPSLLVQm128byte(t *testing.T) {
 	a := make([]byte, 64)
 	aT := make([]byte, 64)
 	for i := 0; i < len(a); i++ {
@@ -267,13 +204,13 @@ func TestPMADDUBSWm128byte(t *testing.T) {
 	}
 	copy(bT, b)
 
-	PMADDUBSWm128byte(a, b)
+	VPSLLVQm128byte(a, b)
 	if a[0] == aT[0] && b[0] == bT[0] {
-		t.Error("Nothing changed on PMADDUBSW")
+		t.Error("Nothing changed on VPSLLVQ")
 	}
 }
 
-func TestPMULHRSWm128byte(t *testing.T) {
+func TestVPSRAVDm128byte(t *testing.T) {
 	a := make([]byte, 64)
 	aT := make([]byte, 64)
 	for i := 0; i < len(a); i++ {
@@ -288,13 +225,13 @@ func TestPMULHRSWm128byte(t *testing.T) {
 	}
 	copy(bT, b)
 
-	PMULHRSWm128byte(a, b)
+	VPSRAVDm128byte(a, b)
 	if a[0] == aT[0] && b[0] == bT[0] {
-		t.Error("Nothing changed on PMULHRSW")
+		t.Error("Nothing changed on VPSRAVD")
 	}
 }
 
-func TestPSHUFBm128byte(t *testing.T) {
+func TestVPSRLVDm128byte(t *testing.T) {
 	a := make([]byte, 64)
 	aT := make([]byte, 64)
 	for i := 0; i < len(a); i++ {
@@ -309,13 +246,13 @@ func TestPSHUFBm128byte(t *testing.T) {
 	}
 	copy(bT, b)
 
-	PSHUFBm128byte(a, b)
+	VPSRLVDm128byte(a, b)
 	if a[0] == aT[0] && b[0] == bT[0] {
-		t.Error("Nothing changed on PSHUFB")
+		t.Error("Nothing changed on VPSRLVD")
 	}
 }
 
-func TestPSIGNBm128byte(t *testing.T) {
+func TestVPSRLVQm128byte(t *testing.T) {
 	a := make([]byte, 64)
 	aT := make([]byte, 64)
 	for i := 0; i < len(a); i++ {
@@ -330,50 +267,8 @@ func TestPSIGNBm128byte(t *testing.T) {
 	}
 	copy(bT, b)
 
-	PSIGNBm128byte(a, b)
+	VPSRLVQm128byte(a, b)
 	if a[0] == aT[0] && b[0] == bT[0] {
-		t.Error("Nothing changed on PSIGNB")
-	}
-}
-
-func TestPSIGNDm128byte(t *testing.T) {
-	a := make([]byte, 64)
-	aT := make([]byte, 64)
-	for i := 0; i < len(a); i++ {
-		a[i] = 1
-	}
-	copy(aT, a)
-
-	b := make([]byte, 64)
-	bT := make([]byte, 64)
-	for i := 0; i < len(b); i++ {
-		b[i] = 2
-	}
-	copy(bT, b)
-
-	PSIGNDm128byte(a, b)
-	if a[0] == aT[0] && b[0] == bT[0] {
-		t.Error("Nothing changed on PSIGND")
-	}
-}
-
-func TestPSIGNWm128byte(t *testing.T) {
-	a := make([]byte, 64)
-	aT := make([]byte, 64)
-	for i := 0; i < len(a); i++ {
-		a[i] = 1
-	}
-	copy(aT, a)
-
-	b := make([]byte, 64)
-	bT := make([]byte, 64)
-	for i := 0; i < len(b); i++ {
-		b[i] = 2
-	}
-	copy(bT, b)
-
-	PSIGNWm128byte(a, b)
-	if a[0] == aT[0] && b[0] == bT[0] {
-		t.Error("Nothing changed on PSIGNW")
+		t.Error("Nothing changed on VPSRLVQ")
 	}
 }

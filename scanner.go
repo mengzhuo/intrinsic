@@ -421,8 +421,6 @@ func {{$inst.FuncName}}{{$inst.Register}}{{$target}}({{$inst.CovertArgs $target}
 {{end}}{{end}}
 `
 
-const testTmpl = ``
-
 const X1X2 = `FPTOX1X2
 	%s X2, X1
 	RETX1X2
@@ -539,6 +537,34 @@ PMINUW
 PTEST
 PCMPGTQ
 `)
+
+const testTmpl = `package {{.FeatureName}}
+
+{{ range $index, $inst := .InstList }}
+{{ range $target := .Target }}
+
+func Test{{$inst.FuncName}}{{$inst.Register}}{{$target}}(t *testing.T){
+	a := make([]{{$target}}, 64)
+	aT := make([]{{$target}}, 64)
+	for i:=0;i<len(a);i++{
+		a[i] = 1
+	}
+	copy(aT, a)
+
+	b := make([]{{$target}}, 64)
+	bT := make([]{{$target}}, 64)
+	for i:=0;i<len(b);i++{
+		b[i] = 2
+	}
+	copy(bT, b)
+
+	{{$inst.FuncName}}{{$inst.Register}}{{$target}}(a,b)
+	if a[0] == aT[0] && b[0] == bT[0] {
+		t.Error("Nothing changed on {{$inst.FuncName}}")
+	}
+}
+{{end}}{{end}}
+`
 
 type byName []*Inst
 
