@@ -562,6 +562,7 @@ func Test{{$inst.FuncName}}{{$inst.Register}}{{$target}}(t *testing.T){
 	}
 	copy(bT, b)
 	{{$inst.FuncName}}{{$inst.Register}}{{$target}}(a,b)
+	t.Logf("{{$inst.FuncName}}{{$inst.Register}}{{$target}}\na=%v\nb=%v", a,b)
 }
 {{end}}{{end}}
 `

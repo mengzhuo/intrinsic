@@ -19,6 +19,7 @@ func TestPCMPGTQm128byte(t *testing.T) {
 	}
 	copy(bT, b)
 	PCMPGTQm128byte(a, b)
+	t.Logf("PCMPGTQm128byte\na=%v\nb=%v", a, b)
 }
 
 func TestPCMPGTQm128int64(t *testing.T) {
@@ -36,4 +37,5 @@ func TestPCMPGTQm128int64(t *testing.T) {
 	}
 	copy(bT, b)
 	PCMPGTQm128int64(a, b)
+	t.Logf("PCMPGTQm128int64\na=%v\nb=%v", a, b)
 }
