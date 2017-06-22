@@ -1,8 +1,21 @@
 package sse42
 
 import (
+	"strings"
 	"testing"
 )
+
+func sh(s string) bool {
+
+	sss := []string{"Low", "High", "Test"}
+
+	for _, cmp := range sss {
+		if strings.Index(s, cmp) != -1 {
+			return true
+		}
+	}
+	return false
+}
 
 func TestPCMPGTQm128byte(t *testing.T) {
 	a := make([]byte, 64)
@@ -19,7 +32,9 @@ func TestPCMPGTQm128byte(t *testing.T) {
 	}
 	copy(bT, b)
 	PCMPGTQm128byte(a, b)
-	t.Logf("PCMPGTQm128byte\na=%v\nb=%v", a, b)
+	if a[0] == aT[0] && b[0] == bT[0] {
+		t.Logf("PCMPGTQ, a=%v, b=%v", a, b)
+	}
 }
 
 func TestPCMPGTQm128int64(t *testing.T) {
@@ -37,5 +52,7 @@ func TestPCMPGTQm128int64(t *testing.T) {
 	}
 	copy(bT, b)
 	PCMPGTQm128int64(a, b)
-	t.Logf("PCMPGTQm128int64\na=%v\nb=%v", a, b)
+	if a[0] == aT[0] && b[0] == bT[0] {
+		t.Logf("PCMPGTQ, a=%v, b=%v", a, b)
+	}
 }

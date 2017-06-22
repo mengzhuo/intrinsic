@@ -542,7 +542,19 @@ const testTmpl = `package {{.FeatureName}}
 
 import (
 	"testing"
+	"strings"
 )
+func sh(s string) bool {
+
+    sss := []string{"Low", "High", "Test"}
+
+    for _, cmp := range sss {
+        if strings.Index(s, cmp) != -1 {
+            return true
+        }
+    }
+    return false
+}
 
 {{ range $index, $inst := .InstList }}
 {{ range $target := .Target }}
@@ -562,7 +574,9 @@ func Test{{$inst.FuncName}}{{$inst.Register}}{{$target}}(t *testing.T){
 	}
 	copy(bT, b)
 	{{$inst.FuncName}}{{$inst.Register}}{{$target}}(a,b)
-	t.Logf("{{$inst.FuncName}}{{$inst.Register}}{{$target}}\na=%v\nb=%v", a,b)
+	if a[0] == aT[0] && b[0] == bT[0] {
+		t.Logf("{{$inst.FuncName}}, a=%v, b=%v" , a,b)
+	}
 }
 {{end}}{{end}}
 `

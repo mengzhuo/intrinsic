@@ -1,8 +1,21 @@
 package sse3
 
 import (
+	"strings"
 	"testing"
 )
+
+func sh(s string) bool {
+
+	sss := []string{"Low", "High", "Test"}
+
+	for _, cmp := range sss {
+		if strings.Index(s, cmp) != -1 {
+			return true
+		}
+	}
+	return false
+}
 
 func TestADDSUBPDm128byte(t *testing.T) {
 	a := make([]byte, 64)
@@ -19,7 +32,9 @@ func TestADDSUBPDm128byte(t *testing.T) {
 	}
 	copy(bT, b)
 	ADDSUBPDm128byte(a, b)
-	t.Logf("ADDSUBPDm128byte\na=%v\nb=%v", a, b)
+	if a[0] == aT[0] && b[0] == bT[0] {
+		t.Logf("ADDSUBPD, a=%v, b=%v", a, b)
+	}
 }
 
 func TestADDSUBPDm128float64(t *testing.T) {
@@ -37,7 +52,9 @@ func TestADDSUBPDm128float64(t *testing.T) {
 	}
 	copy(bT, b)
 	ADDSUBPDm128float64(a, b)
-	t.Logf("ADDSUBPDm128float64\na=%v\nb=%v", a, b)
+	if a[0] == aT[0] && b[0] == bT[0] {
+		t.Logf("ADDSUBPD, a=%v, b=%v", a, b)
+	}
 }
 
 func TestADDSUBPSm128byte(t *testing.T) {
@@ -55,7 +72,9 @@ func TestADDSUBPSm128byte(t *testing.T) {
 	}
 	copy(bT, b)
 	ADDSUBPSm128byte(a, b)
-	t.Logf("ADDSUBPSm128byte\na=%v\nb=%v", a, b)
+	if a[0] == aT[0] && b[0] == bT[0] {
+		t.Logf("ADDSUBPS, a=%v, b=%v", a, b)
+	}
 }
 
 func TestADDSUBPSm128float32(t *testing.T) {
@@ -73,7 +92,9 @@ func TestADDSUBPSm128float32(t *testing.T) {
 	}
 	copy(bT, b)
 	ADDSUBPSm128float32(a, b)
-	t.Logf("ADDSUBPSm128float32\na=%v\nb=%v", a, b)
+	if a[0] == aT[0] && b[0] == bT[0] {
+		t.Logf("ADDSUBPS, a=%v, b=%v", a, b)
+	}
 }
 
 func TestHADDPDm128byte(t *testing.T) {
@@ -91,7 +112,9 @@ func TestHADDPDm128byte(t *testing.T) {
 	}
 	copy(bT, b)
 	HADDPDm128byte(a, b)
-	t.Logf("HADDPDm128byte\na=%v\nb=%v", a, b)
+	if a[0] == aT[0] && b[0] == bT[0] {
+		t.Logf("HADDPD, a=%v, b=%v", a, b)
+	}
 }
 
 func TestHADDPDm128float64(t *testing.T) {
@@ -109,7 +132,9 @@ func TestHADDPDm128float64(t *testing.T) {
 	}
 	copy(bT, b)
 	HADDPDm128float64(a, b)
-	t.Logf("HADDPDm128float64\na=%v\nb=%v", a, b)
+	if a[0] == aT[0] && b[0] == bT[0] {
+		t.Logf("HADDPD, a=%v, b=%v", a, b)
+	}
 }
 
 func TestHADDPSm128byte(t *testing.T) {
@@ -127,7 +152,9 @@ func TestHADDPSm128byte(t *testing.T) {
 	}
 	copy(bT, b)
 	HADDPSm128byte(a, b)
-	t.Logf("HADDPSm128byte\na=%v\nb=%v", a, b)
+	if a[0] == aT[0] && b[0] == bT[0] {
+		t.Logf("HADDPS, a=%v, b=%v", a, b)
+	}
 }
 
 func TestHADDPSm128float32(t *testing.T) {
@@ -145,7 +172,9 @@ func TestHADDPSm128float32(t *testing.T) {
 	}
 	copy(bT, b)
 	HADDPSm128float32(a, b)
-	t.Logf("HADDPSm128float32\na=%v\nb=%v", a, b)
+	if a[0] == aT[0] && b[0] == bT[0] {
+		t.Logf("HADDPS, a=%v, b=%v", a, b)
+	}
 }
 
 func TestHSUBPDm128byte(t *testing.T) {
@@ -163,7 +192,9 @@ func TestHSUBPDm128byte(t *testing.T) {
 	}
 	copy(bT, b)
 	HSUBPDm128byte(a, b)
-	t.Logf("HSUBPDm128byte\na=%v\nb=%v", a, b)
+	if a[0] == aT[0] && b[0] == bT[0] {
+		t.Logf("HSUBPD, a=%v, b=%v", a, b)
+	}
 }
 
 func TestHSUBPDm128float64(t *testing.T) {
@@ -181,7 +212,9 @@ func TestHSUBPDm128float64(t *testing.T) {
 	}
 	copy(bT, b)
 	HSUBPDm128float64(a, b)
-	t.Logf("HSUBPDm128float64\na=%v\nb=%v", a, b)
+	if a[0] == aT[0] && b[0] == bT[0] {
+		t.Logf("HSUBPD, a=%v, b=%v", a, b)
+	}
 }
 
 func TestHSUBPSm128byte(t *testing.T) {
@@ -199,7 +232,9 @@ func TestHSUBPSm128byte(t *testing.T) {
 	}
 	copy(bT, b)
 	HSUBPSm128byte(a, b)
-	t.Logf("HSUBPSm128byte\na=%v\nb=%v", a, b)
+	if a[0] == aT[0] && b[0] == bT[0] {
+		t.Logf("HSUBPS, a=%v, b=%v", a, b)
+	}
 }
 
 func TestHSUBPSm128float32(t *testing.T) {
@@ -217,5 +252,7 @@ func TestHSUBPSm128float32(t *testing.T) {
 	}
 	copy(bT, b)
 	HSUBPSm128float32(a, b)
-	t.Logf("HSUBPSm128float32\na=%v\nb=%v", a, b)
+	if a[0] == aT[0] && b[0] == bT[0] {
+		t.Logf("HSUBPS, a=%v, b=%v", a, b)
+	}
 }

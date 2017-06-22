@@ -1,8 +1,21 @@
 package ssse3
 
 import (
+	"strings"
 	"testing"
 )
+
+func sh(s string) bool {
+
+	sss := []string{"Low", "High", "Test"}
+
+	for _, cmp := range sss {
+		if strings.Index(s, cmp) != -1 {
+			return true
+		}
+	}
+	return false
+}
 
 func TestPABSBm128byte(t *testing.T) {
 	a := make([]byte, 64)
@@ -19,7 +32,9 @@ func TestPABSBm128byte(t *testing.T) {
 	}
 	copy(bT, b)
 	PABSBm128byte(a, b)
-	t.Logf("PABSBm128byte\na=%v\nb=%v", a, b)
+	if a[0] == aT[0] && b[0] == bT[0] {
+		t.Logf("PABSB, a=%v, b=%v", a, b)
+	}
 }
 
 func TestPABSBm128int8(t *testing.T) {
@@ -37,7 +52,9 @@ func TestPABSBm128int8(t *testing.T) {
 	}
 	copy(bT, b)
 	PABSBm128int8(a, b)
-	t.Logf("PABSBm128int8\na=%v\nb=%v", a, b)
+	if a[0] == aT[0] && b[0] == bT[0] {
+		t.Logf("PABSB, a=%v, b=%v", a, b)
+	}
 }
 
 func TestPABSDm128byte(t *testing.T) {
@@ -55,7 +72,9 @@ func TestPABSDm128byte(t *testing.T) {
 	}
 	copy(bT, b)
 	PABSDm128byte(a, b)
-	t.Logf("PABSDm128byte\na=%v\nb=%v", a, b)
+	if a[0] == aT[0] && b[0] == bT[0] {
+		t.Logf("PABSD, a=%v, b=%v", a, b)
+	}
 }
 
 func TestPABSDm128int32(t *testing.T) {
@@ -73,7 +92,9 @@ func TestPABSDm128int32(t *testing.T) {
 	}
 	copy(bT, b)
 	PABSDm128int32(a, b)
-	t.Logf("PABSDm128int32\na=%v\nb=%v", a, b)
+	if a[0] == aT[0] && b[0] == bT[0] {
+		t.Logf("PABSD, a=%v, b=%v", a, b)
+	}
 }
 
 func TestPABSWm128byte(t *testing.T) {
@@ -91,7 +112,9 @@ func TestPABSWm128byte(t *testing.T) {
 	}
 	copy(bT, b)
 	PABSWm128byte(a, b)
-	t.Logf("PABSWm128byte\na=%v\nb=%v", a, b)
+	if a[0] == aT[0] && b[0] == bT[0] {
+		t.Logf("PABSW, a=%v, b=%v", a, b)
+	}
 }
 
 func TestPABSWm128int16(t *testing.T) {
@@ -109,7 +132,9 @@ func TestPABSWm128int16(t *testing.T) {
 	}
 	copy(bT, b)
 	PABSWm128int16(a, b)
-	t.Logf("PABSWm128int16\na=%v\nb=%v", a, b)
+	if a[0] == aT[0] && b[0] == bT[0] {
+		t.Logf("PABSW, a=%v, b=%v", a, b)
+	}
 }
 
 func TestPHADDDm128byte(t *testing.T) {
@@ -127,7 +152,9 @@ func TestPHADDDm128byte(t *testing.T) {
 	}
 	copy(bT, b)
 	PHADDDm128byte(a, b)
-	t.Logf("PHADDDm128byte\na=%v\nb=%v", a, b)
+	if a[0] == aT[0] && b[0] == bT[0] {
+		t.Logf("PHADDD, a=%v, b=%v", a, b)
+	}
 }
 
 func TestPHADDSWm128byte(t *testing.T) {
@@ -145,7 +172,9 @@ func TestPHADDSWm128byte(t *testing.T) {
 	}
 	copy(bT, b)
 	PHADDSWm128byte(a, b)
-	t.Logf("PHADDSWm128byte\na=%v\nb=%v", a, b)
+	if a[0] == aT[0] && b[0] == bT[0] {
+		t.Logf("PHADDSW, a=%v, b=%v", a, b)
+	}
 }
 
 func TestPHADDWm128byte(t *testing.T) {
@@ -163,7 +192,9 @@ func TestPHADDWm128byte(t *testing.T) {
 	}
 	copy(bT, b)
 	PHADDWm128byte(a, b)
-	t.Logf("PHADDWm128byte\na=%v\nb=%v", a, b)
+	if a[0] == aT[0] && b[0] == bT[0] {
+		t.Logf("PHADDW, a=%v, b=%v", a, b)
+	}
 }
 
 func TestPHSUBDm128byte(t *testing.T) {
@@ -181,7 +212,9 @@ func TestPHSUBDm128byte(t *testing.T) {
 	}
 	copy(bT, b)
 	PHSUBDm128byte(a, b)
-	t.Logf("PHSUBDm128byte\na=%v\nb=%v", a, b)
+	if a[0] == aT[0] && b[0] == bT[0] {
+		t.Logf("PHSUBD, a=%v, b=%v", a, b)
+	}
 }
 
 func TestPHSUBSWm128byte(t *testing.T) {
@@ -199,7 +232,9 @@ func TestPHSUBSWm128byte(t *testing.T) {
 	}
 	copy(bT, b)
 	PHSUBSWm128byte(a, b)
-	t.Logf("PHSUBSWm128byte\na=%v\nb=%v", a, b)
+	if a[0] == aT[0] && b[0] == bT[0] {
+		t.Logf("PHSUBSW, a=%v, b=%v", a, b)
+	}
 }
 
 func TestPHSUBWm128byte(t *testing.T) {
@@ -217,7 +252,9 @@ func TestPHSUBWm128byte(t *testing.T) {
 	}
 	copy(bT, b)
 	PHSUBWm128byte(a, b)
-	t.Logf("PHSUBWm128byte\na=%v\nb=%v", a, b)
+	if a[0] == aT[0] && b[0] == bT[0] {
+		t.Logf("PHSUBW, a=%v, b=%v", a, b)
+	}
 }
 
 func TestPMADDUBSWm128byte(t *testing.T) {
@@ -235,7 +272,9 @@ func TestPMADDUBSWm128byte(t *testing.T) {
 	}
 	copy(bT, b)
 	PMADDUBSWm128byte(a, b)
-	t.Logf("PMADDUBSWm128byte\na=%v\nb=%v", a, b)
+	if a[0] == aT[0] && b[0] == bT[0] {
+		t.Logf("PMADDUBSW, a=%v, b=%v", a, b)
+	}
 }
 
 func TestPMULHRSWm128byte(t *testing.T) {
@@ -253,7 +292,9 @@ func TestPMULHRSWm128byte(t *testing.T) {
 	}
 	copy(bT, b)
 	PMULHRSWm128byte(a, b)
-	t.Logf("PMULHRSWm128byte\na=%v\nb=%v", a, b)
+	if a[0] == aT[0] && b[0] == bT[0] {
+		t.Logf("PMULHRSW, a=%v, b=%v", a, b)
+	}
 }
 
 func TestPSHUFBm128byte(t *testing.T) {
@@ -271,7 +312,9 @@ func TestPSHUFBm128byte(t *testing.T) {
 	}
 	copy(bT, b)
 	PSHUFBm128byte(a, b)
-	t.Logf("PSHUFBm128byte\na=%v\nb=%v", a, b)
+	if a[0] == aT[0] && b[0] == bT[0] {
+		t.Logf("PSHUFB, a=%v, b=%v", a, b)
+	}
 }
 
 func TestPSIGNBm128byte(t *testing.T) {
@@ -289,7 +332,9 @@ func TestPSIGNBm128byte(t *testing.T) {
 	}
 	copy(bT, b)
 	PSIGNBm128byte(a, b)
-	t.Logf("PSIGNBm128byte\na=%v\nb=%v", a, b)
+	if a[0] == aT[0] && b[0] == bT[0] {
+		t.Logf("PSIGNB, a=%v, b=%v", a, b)
+	}
 }
 
 func TestPSIGNDm128byte(t *testing.T) {
@@ -307,7 +352,9 @@ func TestPSIGNDm128byte(t *testing.T) {
 	}
 	copy(bT, b)
 	PSIGNDm128byte(a, b)
-	t.Logf("PSIGNDm128byte\na=%v\nb=%v", a, b)
+	if a[0] == aT[0] && b[0] == bT[0] {
+		t.Logf("PSIGND, a=%v, b=%v", a, b)
+	}
 }
 
 func TestPSIGNWm128byte(t *testing.T) {
@@ -325,5 +372,7 @@ func TestPSIGNWm128byte(t *testing.T) {
 	}
 	copy(bT, b)
 	PSIGNWm128byte(a, b)
-	t.Logf("PSIGNWm128byte\na=%v\nb=%v", a, b)
+	if a[0] == aT[0] && b[0] == bT[0] {
+		t.Logf("PSIGNW, a=%v, b=%v", a, b)
+	}
 }
