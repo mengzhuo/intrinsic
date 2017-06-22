@@ -2,16 +2,16 @@ all: scanner
 	$(foreach feature, $(feature_list), $(call gen, $(feature)))
 
 scanner:
-	rm -rf .tmp_scanner
-	go build  -o .tmp_scanner  scanner.go
+	@rm -rf .tmp_scanner
+	@go build  -o .tmp_scanner  scanner.go
 
 define gen
-	mkdir -p $1
-	./.tmp_scanner -out func -feature $1 > $1/inst_amd64.go
-	gofmt -w $1
+	@mkdir -p $1
+	@./.tmp_scanner -out func -feature $1 > $1/inst_amd64.go
+	@gofmt -w $1
 
-	mkdir -p $1
-	./.tmp_scanner -out asm -feature $1 > $1/inst_amd64.s
+	@mkdir -p $1
+	@./.tmp_scanner -out asm -feature $1 > $1/inst_amd64.s
 
 endef
 
