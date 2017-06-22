@@ -1,5 +1,9 @@
 
 # intrinsic
+
+[![Build Status](https://travis-ci.org/mengzhuo/intrinsic.svg?branch=master)](https://travis-ci.org/mengzhuo/intrinsic)
+[![Go Report Card](https://goreportcard.com/badge/github.com/mengzhuo/intrinsic)](https://goreportcard.com/report/github.com/mengzhuo/intrinsic)
+
 Provide Golang native SIMD intrinsics on x86/amd64 platform
 
 * SSE2 [![godoc reference](https://godoc.org/github.com/mengzhuo/intrinsic/sse2?status.png)](https://godoc.org/github.com/mengzhuo/intrinsic/sse2)
