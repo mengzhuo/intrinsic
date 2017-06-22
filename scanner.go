@@ -535,6 +535,7 @@ PMINUD
 PMINUW
 PMINUW
 PTEST
+PCMPGTQ
 `)
 
 type byName []*Inst
