@@ -332,8 +332,11 @@ func makeInst(feature string, instList []*Inst) {
 		genInst = append(genInst, inst)
 	}
 	sort.Sort(byName(genInst))
-	for _, inst := range skipedInst {
-		log.Printf("skiped=%s %s(%d)", inst.FuncName, inst.Args, len(inst.Args))
+
+	if os.Getenv("SHOW_SKIPPED") != "" {
+		for _, inst := range skipedInst {
+			log.Printf("skiped=%s %s(%d)", inst.FuncName, inst.Args, len(inst.Args))
+		}
 	}
 	log.Printf("%s gen=%d, total=%d, ratio=%0.2f%%", feature,
 		gen, len(instList),
