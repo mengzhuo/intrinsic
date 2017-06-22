@@ -2,65 +2,65 @@ package avx2
 
 // go:noescape
 
-// Load with Broadcast Floating-Point Data
+// VBROADCASTSSbyte Load with Broadcast Floating-Point Data
 func VBROADCASTSSbyte(X1 []byte, X2 []byte)
 
 // go:noescape
 
-// Packed Absolute Value
+// VPABSBm256byte Packed Absolute Value
 func VPABSBm256byte(Y1 []byte, Y2 []byte)
 
 // go:noescape
 
-// Packed Absolute Value
+// VPABSDm256byte Packed Absolute Value
 func VPABSDm256byte(Y1 []byte, Y2 []byte)
 
 // go:noescape
 
-// Packed Absolute Value
+// VPABSWm256byte Packed Absolute Value
 func VPABSWm256byte(Y1 []byte, Y2 []byte)
 
 // go:noescape
 
-// Load with Broadcast Integer Data from General Purpose Register
+// VPBROADCASTBm8byte Load with Broadcast Integer Data from General Purpose Register
 func VPBROADCASTBm8byte(X1 []byte, X2 []byte)
 
 // go:noescape
 
-// Load with Broadcast Integer Data from General Purpose Register
+// VPBROADCASTDm32byte Load with Broadcast Integer Data from General Purpose Register
 func VPBROADCASTDm32byte(X1 []byte, X2 []byte)
 
 // go:noescape
 
-// Load with Broadcast Integer Data from General Purpose Register
+// VPBROADCASTQm64byte Load with Broadcast Integer Data from General Purpose Register
 func VPBROADCASTQm64byte(X1 []byte, X2 []byte)
 
 // go:noescape
 
-// Load with Broadcast Integer Data from General Purpose Register
+// VPBROADCASTWm16byte Load with Broadcast Integer Data from General Purpose Register
 func VPBROADCASTWm16byte(X1 []byte, X2 []byte)
 
 // go:noescape
 
-// Variable Bit Shift Left Logical
+// VPSLLVDm128byte Variable Bit Shift Left Logical
 func VPSLLVDm128byte(X1 []byte, X2 []byte, X3 []byte)
 
 // go:noescape
 
-// Variable Bit Shift Left Logical
+// VPSLLVQm128byte Variable Bit Shift Left Logical
 func VPSLLVQm128byte(X1 []byte, X2 []byte, X3 []byte)
 
 // go:noescape
 
-// Variable Bit Shift Right Arithmetic
+// VPSRAVDm128byte Variable Bit Shift Right Arithmetic
 func VPSRAVDm128byte(X1 []byte, X2 []byte, X3 []byte)
 
 // go:noescape
 
-// Variable Bit Shift Right Logical
+// VPSRLVDm128byte Variable Bit Shift Right Logical
 func VPSRLVDm128byte(X1 []byte, X2 []byte, X3 []byte)
 
 // go:noescape
 
-// Variable Bit Shift Right Logical
+// VPSRLVQm128byte Variable Bit Shift Right Logical
 func VPSRLVQm128byte(X1 []byte, X2 []byte, X3 []byte)
