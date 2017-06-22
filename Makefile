@@ -17,7 +17,7 @@ define gen
 endef
 
 define testfunc
-	cd $1 && go test -v ; cd -;
+	cd $1 && go test -cover ; cd -;
 endef
 
 

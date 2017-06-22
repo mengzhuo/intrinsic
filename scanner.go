@@ -540,6 +540,10 @@ PCMPGTQ
 
 const testTmpl = `package {{.FeatureName}}
 
+import (
+	"testing"
+)
+
 {{ range $index, $inst := .InstList }}
 {{ range $target := .Target }}
 
@@ -557,11 +561,7 @@ func Test{{$inst.FuncName}}{{$inst.Register}}{{$target}}(t *testing.T){
 		b[i] = 2
 	}
 	copy(bT, b)
-
 	{{$inst.FuncName}}{{$inst.Register}}{{$target}}(a,b)
-	if a[0] == aT[0] && b[0] == bT[0] {
-		t.Error("Nothing changed on {{$inst.FuncName}}")
-	}
 }
 {{end}}{{end}}
 `
