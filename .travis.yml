@@ -5,3 +5,8 @@ go:
 
 sudo: false
 script: make test
+
+branches:
+  only:
+    - master
+    - stable
