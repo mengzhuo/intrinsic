@@ -66,6 +66,8 @@ func ParseInst(l []string) (i *Inst) {
 			t = "X2"
 		case "xmm3":
 			t = "X3"
+		case "xmm4":
+			t = "X4"
 		case "mm1":
 			t = "M1"
 		case "mm2":
@@ -78,6 +80,8 @@ func ParseInst(l []string) (i *Inst) {
 			t = "Y2"
 		case "ymm3":
 			t = "Y3"
+		case "ymm4":
+			t = "Y4"
 		}
 		i.Args[j] = t
 	}
@@ -112,16 +116,21 @@ func (i *Inst) CovertArgs(t string) string {
 }
 
 func (i *Inst) TrueOpcode() string {
-	data := strings.Split(i.Encoding, " ")
-	for i, v := range data {
-		v = strings.TrimSpace(v)
-		switch v {
-		case "/r":
-			v = ""
-		default:
-			v = "BYTE $0x" + v + ";"
+	var data []string
+	switch i.FuncName[0] {
+	case 'V':
+	default:
+		data = strings.Split(i.Encoding, " ")
+		for i, v := range data {
+			v = strings.TrimSpace(v)
+			switch v {
+			case "/r":
+				v = ""
+			default:
+				v = "BYTE $0x" + v + ";"
+			}
+			data[i] = v
 		}
-		data[i] = v
 	}
 	return strings.Join(data, " ")
 }

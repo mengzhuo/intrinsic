@@ -1,9 +1,12 @@
 
 # intrinsic
-This project is still Work in progress.
 Provide Golang native SIMD intrinsics on x86/amd64 platform
 
 * SSE2 [![godoc reference](https://godoc.org/github.com/mengzhuo/intrinsic/sse2?status.png)](https://godoc.org/github.com/mengzhuo/intrinsic/sse2)
+* SSE3 [![godoc reference](https://godoc.org/github.com/mengzhuo/intrinsic/sse3?status.png)](https://godoc.org/github.com/mengzhuo/intrinsic/sse3)
+* SSSE3 [![godoc reference](https://godoc.org/github.com/mengzhuo/intrinsic/ssse3?status.png)](https://godoc.org/github.com/mengzhuo/intrinsic/ssse3)
+* SSE41 [![godoc reference](https://godoc.org/github.com/mengzhuo/intrinsic/sse41?status.png)](https://godoc.org/github.com/mengzhuo/intrinsic/sse41)
+* SSE42 [![godoc reference](https://godoc.org/github.com/mengzhuo/intrinsic/sse42?status.png)](https://godoc.org/github.com/mengzhuo/intrinsic/sse42)
 
 ## Usage
 
