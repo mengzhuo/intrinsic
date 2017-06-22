@@ -1,4 +1,5 @@
-feature_list := sse2 sse3 ssse3 sse41 sse42 avx avx2
+all: scanner
+	$(foreach feature, $(feature_list), $(call gen, $(feature)))
 
 scanner:
 	rm -rf .tmp_scanner
@@ -15,12 +16,11 @@ define gen
 endef
 
 define testfunc
-	cd $1
-	go test -v
+	cd $1 && go test -v ; cd -;
 endef
 
-all: scanner
-	$(foreach feature, $(feature_list), $(call gen, $(feature)))
+
+feature_list := sse2 sse3 ssse3 sse41 sse42 avx avx2
 
 test: 
 	$(foreach feature, $(feature_list), $(call testfunc, $(feature)))
