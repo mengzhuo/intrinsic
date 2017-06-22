@@ -335,7 +335,7 @@ func makeInst(feature string, instList []*Inst) {
 
 	if os.Getenv("SHOW_SKIPPED") != "" {
 		for _, inst := range skipedInst {
-			log.Printf("skiped=%s %s(%d)", inst.FuncName, inst.Args, len(inst.Args))
+			log.Printf("%s skiped=%s %s(%d)", feature, inst.FuncName, inst.Args, len(inst.Args))
 		}
 	}
 	log.Printf("%s gen=%d, total=%d, ratio=%0.2f%%", feature,
