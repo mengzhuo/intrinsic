@@ -85,13 +85,12 @@ func ParseInst(l []string) (i *Inst) {
 		}
 		i.Args[j] = t
 	}
-	sort.Reverse(sort.StringSlice(i.Args))
 	return
 }
 
 func (i *Inst) String() string {
 	if i.IsPacked() {
-		return fmt.Sprintf("%10s %4v %4v %v", i.FuncName, i.Args, i.Target())
+		return fmt.Sprintf("%10s %4v %4v", i.FuncName, i.Args, i.Target())
 	}
 	return fmt.Sprintf("%s %v %s", i.FuncName, i.Args, i.Encoding)
 }
